@@ -1,0 +1,40 @@
+# ============================================
+# SFDNet Training Configuration - LOL-v1
+# ============================================
+
+# --- 数据集 ---
+dataset:
+  name: LOLv1
+  train_root: ./datasets/LOLv1/
+  test_root: ./datasets/LOLv1/
+  patch_size: 256
+  num_workers: 8
+
+# --- 模型 ---
+model:
+  in_channels: 3
+  out_channels: 3
+  base_channels: 32
+
+# --- 训练 ---
+training:
+  batch_size: 8
+  epochs: 300
+  lr: 2.0e-4
+  min_lr: 1.0e-6
+  weight_decay: 1.0e-4
+  scheduler: cosine
+  warmup_epochs: 10
+
+# --- 损失函数权重 ---
+loss:
+  lambda_char: 1.0
+  lambda_edge: 0.5
+  lambda_freq: 0.5
+  lambda_percep: 0.1
+
+# --- 保存 ---
+save:
+  save_dir: ./checkpoints/lol_v1/
+  save_freq: 10
+  log_dir: ./logs/lol_v1/
